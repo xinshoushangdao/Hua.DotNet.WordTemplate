@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hua.DotNet.WordTemplate", "Hua.DotNet.WordTemplate\Hua.DotNet.WordTemplate.csproj", "{A5C99F47-9A5F-4FA3-8D3E-E7D9078B9BA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hua.DotNet.WordTemplate.Test", "Hua.DotNet.WordTemplate.Test\Hua.DotNet.WordTemplate.Test.csproj", "{CBCC3496-4A6F-43DF-A1E8-C334C8E28F8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5C99F47-9A5F-4FA3-8D3E-E7D9078B9BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5C99F47-9A5F-4FA3-8D3E-E7D9078B9BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5C99F47-9A5F-4FA3-8D3E-E7D9078B9BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5C99F47-9A5F-4FA3-8D3E-E7D9078B9BA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBCC3496-4A6F-43DF-A1E8-C334C8E28F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCC3496-4A6F-43DF-A1E8-C334C8E28F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCC3496-4A6F-43DF-A1E8-C334C8E28F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCC3496-4A6F-43DF-A1E8-C334C8E28F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {762E5F4D-93DB-439B-81D0-11469467D63C}
+	EndGlobalSection
+EndGlobal
