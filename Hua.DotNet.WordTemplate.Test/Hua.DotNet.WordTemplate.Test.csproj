@@ -25,4 +25,10 @@
     <ProjectReference Include="..\Hua.DotNet.WordTemplate\Hua.DotNet.WordTemplate.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Template.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

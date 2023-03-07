@@ -8,21 +8,17 @@ namespace Hua.DotNet.WordTemplate
 {
     public class TemplateOption
     {
-        public string Pattern
-        {
-            get
-            {
-                return @"\$\{[^\}]*\}";
-            }
-        }
+        public string Pattern => @"\$\{[^\}]*\}";
 
         public string StartPattern { get; set; } = "${";
 
         public string EndPattern { get; set; } = "}";
 
-        public string StartTag = "<";
+        public string Separator = ":";
 
-        public string EndTag = ">";
+        public string StartTag = "Start";
+
+        public string EndTag = "End";
 
     }
 }
