@@ -3,6 +3,12 @@
     public class Data
     {
         public string Name { get; set; }
-        public List<Data> Data1 { get; set; }
+        public List<DataItem> Data1 { get; set; }
+    }
+
+    public class DataItem
+    {
+        public string Name { get; set; }
+        public List<DataItem> Data1 { get; set; }
     }
 }

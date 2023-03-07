@@ -34,7 +34,10 @@ namespace Hua.DotNet.WordTemplate
             }
 
             ExportModel(_data,srcDoc, desDoc, 0);
-            desDoc.Write(File.Create(desPath));
+            using var fs =  File.Create(desPath);
+            desDoc.Write(fs);
+            desDoc.Close();
+            fs.Close();
             return desPath;
         }
 
@@ -83,11 +86,12 @@ namespace Hua.DotNet.WordTemplate
                         if (value==null) continue;
                         var list = value as IEnumerable<object>;
                         var methodType = typeof(WordTemplate<T>).GetMethod("ExportModel")!
-                            .MakeGenericMethod(propertyInfo.DeclaringType!);
+                            .MakeGenericMethod(propertyInfo.PropertyType.GetGenericArguments().First());
                         foreach (var obj in list)
                         {
                             methodType.Invoke(this, new [] { obj, srcDoc, desDoc, srcIndex });
                         }
+                        return;
                     }
 
                     if (match.Value.EndsWith(_option.StartPattern + _option.EndTag))
@@ -97,9 +101,9 @@ namespace Hua.DotNet.WordTemplate
                             .Substring(index,
                                 match.Groups[0].Value.Length - index - _option.EndPattern.Length);
 
-                        propertyInfo = type.GetProperties().FirstOrDefault(m => m.Name == filedName);
-                        desDoc.SetParagraph(new XWPFParagraph(srcPara.GetCTP(), desDoc.CreateParagraph().Body),
-                            _desIndex++);
+                        var para = new XWPFParagraph(srcPara.GetCTP(), desDoc.CreateParagraph().Body);
+                        para.ReplaceText(match.Value, string.Empty);
+                        desDoc.SetParagraph(para, _desIndex++);
                     }
 
 
@@ -111,7 +115,6 @@ namespace Hua.DotNet.WordTemplate
                     {
                         desPara.ReplaceText(match.Groups[0].Value, propertyInfo.GetValue(model)!.ToString());
                         desDoc.SetParagraph(desPara, _desIndex++);
-                        continue;
                     }
 
                 }

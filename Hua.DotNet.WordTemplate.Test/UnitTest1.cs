@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Hua.DotNet.WordTemplate.Model;
@@ -49,13 +50,13 @@ namespace Hua.DotNet.WordTemplate.Test
             var data = new Data()
             {
                 Name = $"Name:{i++}",
-                Data1 = new List<Data>()
+                Data1 = new List<DataItem>()
             };
             for (var j = 0; j < 10; j++)
             {
-                data.Data1.Add(new Data()
+                data.Data1.Add(new DataItem()
                 {
-                    Name = $"Name:{i++}"
+                    Name = $"Name:{j++}"
                 });
             }
 
@@ -63,6 +64,7 @@ namespace Hua.DotNet.WordTemplate.Test
             var descPath = $"{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.docx";
             var template = new WordTemplate<Data>(data, templatePath);
             template.Export(descPath);
+            Console.WriteLine(descPath);
         }
     }
 }
