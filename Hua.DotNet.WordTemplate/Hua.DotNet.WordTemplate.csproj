@@ -1,13 +1,36 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.1;net6.0;</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>0.0.1</Version>
+		<Authors>Hua</Authors>
+		<Company>XinShouShangDao</Company>
+		<Product>Hua.DotNet.WordTemplate</Product>
+		<Copyright></Copyright>
+		<NeutralLanguage>zh-CN</NeutralLanguage>
+		<Description>邵华模板导出</Description>
+		<LangVersion>latest</LangVersion>
+		<PackageIcon>logo.jpg</PackageIcon>
+		<PackageTags>Hua;Word;Template;</PackageTags>
+		<AssemblyVersion>0.0.0.1</AssemblyVersion>
+		<FileVersion>0.0.0.1</FileVersion>
+		<SignAssembly>True</SignAssembly>
+		<DelaySign>False</DelaySign>
+		<AssemblyOriginatorKeyFile>D:\Paths\Hua.snk</AssemblyOriginatorKeyFile>
+		<PackageReleaseNotes>初始版本</PackageReleaseNotes>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="NPOI" Version="2.6.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="NPOI" Version="2.6.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="C:\Users\ShaoHuaPc\Pictures\logo.jpg">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>

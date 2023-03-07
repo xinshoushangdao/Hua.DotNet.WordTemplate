@@ -1,16 +1,6 @@
-﻿using Microsoft.VisualBasic.FileIO;
-using NPOI.POIFS.Crypt.Dsig;
-using NPOI.XWPF.UserModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using NPOI.XWPF.UserModel;
 using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using NPOI;
-using System.Dynamic;
-using Hua.DotNet.WordTemplate.Model;
 
 namespace Hua.DotNet.WordTemplate
 {
