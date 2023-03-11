@@ -23,6 +23,7 @@
 		<PackageReleaseNotes>初始版本</PackageReleaseNotes>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="NPOI" Version="2.6.0" />
 	</ItemGroup>
 

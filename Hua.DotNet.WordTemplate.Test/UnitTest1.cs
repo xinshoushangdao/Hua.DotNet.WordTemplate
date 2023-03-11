@@ -18,12 +18,13 @@ namespace Hua.DotNet.WordTemplate.Test
         [Fact]
         public void Test2()
         {
-            string input = "这是一个 {b:labla} 示例。";
-            string pattern = @"\{[^\}]*\}";
+            string input = "这是一个 ${Start:Data1}${Name} 示例。";
+            string pattern = @"\$\{[^\}]*\}";
 
             MatchCollection matches = Regex.Matches(input, pattern);
             foreach (Match match in matches)
             {
+                
                 Console.WriteLine(match.Value);
             }
 
@@ -46,17 +47,19 @@ namespace Hua.DotNet.WordTemplate.Test
         [Fact]
         public void TestGen()
         {
-            var i = 0;
+            var i =1;
             var data = new Data()
             {
-                Name = $"Name:{i++}",
+                Name = $"iName:{i}",
+                Desc = $"iDesc:{i}",
                 Data1 = new List<DataItem>()
             };
-            for (var j = 0; j < 10; j++)
+            for (var j = 1; j < 10; j++)
             {
                 data.Data1.Add(new DataItem()
                 {
-                    Name = $"Name:{j++}"
+                    Desc = $"jDesc:{j}",
+                    Name = $"jName:{j}"
                 });
             }
 

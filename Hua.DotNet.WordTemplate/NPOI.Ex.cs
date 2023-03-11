@@ -1,4 +1,5 @@
-﻿using NPOI.XWPF.UserModel;
+﻿using Hua.DotNet.WordTemplate.Model;
+using NPOI.XWPF.UserModel;
 
 namespace Hua.DotNet.WordTemplate
 {
@@ -7,10 +8,6 @@ namespace Hua.DotNet.WordTemplate
         public static XWPFDocument Clone(this XWPFDocument srcDocx)
         {
             var newDocx  = new XWPFDocument();
-            //#region 编号相关
-
-            //#endregion
-
             return newDocx;
         }
         public static XWPFParagraph Clone(this XWPFParagraph srcPara, XWPFDocument? descDocx = null, bool cloneText = false)
@@ -19,7 +16,7 @@ namespace Hua.DotNet.WordTemplate
             if (descDocx != null)
             {
                 if (cloneText)
-                    return new XWPFParagraph(srcPara.GetCTP(), descDocx.CreateParagraph().Body);
+                    return new XWPFParagraph(srcPara.GetCTP().DeepClone(), descDocx.CreateParagraph().Body);
 
                 output =descDocx.CreateParagraph();
             }
