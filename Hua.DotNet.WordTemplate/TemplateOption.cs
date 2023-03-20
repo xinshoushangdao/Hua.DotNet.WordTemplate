@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Hua.DotNet.WordTemplate
 {
+
+    /// <summary>
+    /// 张三 Demo
+    /// </summary>
+
     public class TemplateOption
     {
         public string Pattern => @"\$\{[^\}]*\}";

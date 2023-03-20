@@ -33,10 +33,15 @@ namespace Hua.DotNet.WordTemplate
         public string Export(string desPath)
         {
             //var srcDoc = new XWPFDocument(File.OpenRead(_templatePath));
-            var desDoc = new XWPFDocument(File.OpenRead(_templatePath));
+            using var fs = File.OpenRead(_templatePath);
+            using var ws = File.Open(desPath, FileMode.CreateNew);
+            using var desDoc = new XWPFDocument(fs);
             RemoveParas(desDoc);
             ExportModel(_data, desDoc, 0);
-            desDoc.Write(File.Open(desPath,FileMode.CreateNew));
+            desDoc.Write(ws);
+            desDoc.Close();
+            fs.Close();
+            ws.Close();
             return desPath;
         }
 
@@ -51,7 +56,8 @@ namespace Hua.DotNet.WordTemplate
 
         public int ExportModel<TData>(TData model,XWPFDocument desDoc, int srcIndex = 0)
         {
-            using var srcDoc = new XWPFDocument(File.OpenRead(_templatePath));
+            using var fs = File.OpenRead(_templatePath);
+            using var srcDoc = new XWPFDocument(fs);
 
             var isStartLine = typeof(TData) != typeof(T);
             var offset = 0;
@@ -114,8 +120,9 @@ namespace Hua.DotNet.WordTemplate
                         #endregion
 
                         var list = value as IEnumerable<object>;
+                        var listItemType = propertyInfo.PropertyType.GetGenericArguments().First();
                         var methodType = typeof(WordTemplate<T>).GetMethod("ExportModel")!
-                            .MakeGenericMethod(propertyInfo.PropertyType.GetGenericArguments().First());
+                            .MakeGenericMethod(listItemType);
                         var coff = 0;
                         foreach (var obj in list)
                         {
@@ -131,8 +138,14 @@ namespace Hua.DotNet.WordTemplate
                         .Substring(_option.StartPattern.Length,
                             match.Value.Length - _option.StartPattern.Length - _option.EndPattern.Length);
                     propertyInfo = tData.GetProperties().FirstOrDefault(m => m.Name == filedName);
-                    if (propertyInfo == null) continue;
-                    desPara.ReplaceText(match.Value, propertyInfo.GetValue(model)!.ToString());
+                    if (propertyInfo == null || propertyInfo.GetValue(model) == null)
+                    {
+                        desPara.ReplaceText(match.Value,  string.Empty);
+                    }
+                    else
+                    {
+                        desPara.ReplaceText(match.Value, propertyInfo.GetValue(model)?.ToString());
+                    }
                 }
                 desDoc.SetParagraph(desPara, _desIndex++); 
                 nextLine:;
